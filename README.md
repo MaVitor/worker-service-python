@@ -8,9 +8,9 @@ Sua principal responsabilidade é rodar em um ciclo contínuo para garantir que 
 
 ## Tecnologias Utilizadas
 
--   **Python 3.12:** Linguagem principal, escolhida por sua simplicidade e robustez para scripts de automação e tarefas de orquestração.
--   **Requests:** Biblioteca para realizar chamadas HTTP aos outros microsserviços da plataforma.
--   **Docker:** Para containerizar a aplicação, garantindo um ambiente de execução consistente e isolado.
+-   **Python 3.12:** Linguagem principal, escolhida por sua simplicidade e robustez.
+-   **Requests:** Biblioteca para realizar chamadas HTTP aos outros microsserviços.
+-   **Docker:** Para containerizar a aplicação.
 
 ## Funcionalidades
 
@@ -18,7 +18,7 @@ Sua principal responsabilidade é rodar em um ciclo contínuo para garantir que 
 -   Para cada produto, invoca o `scraper-service-rust` para obter o preço atual.
 -   Atualiza o `preco_atual` do produto na `data-api-php`.
 -   Compara o `preco_atual` com o `preco_alvo`.
--   Caso o preço seja igual ou menor que o alvo, aciona o `notificador-service-go` para enviar o alerta.
+-   Caso o preço seja igual ou menor que o alvo, aciona o `notificador-service-go` para enviar um alerta via Telegram.
 
 ## Variáveis de Ambiente
 
@@ -29,5 +29,3 @@ Para se comunicar com os outros serviços, este worker depende das seguintes var
 | `DATA_API_URL`           | URL base do serviço de dados (PHP).               | `http://api:8000`                    |
 | `SCRAPER_SERVICE_URL`    | URL base do serviço de scraping (Rust).           | `http://scraper:8082`                |
 | `NOTIFICATION_SERVICE_URL` | URL base do serviço de notificação (Go). | `http://notifier:8080`               |
-
----
